@@ -14,7 +14,7 @@ class Timer(tillFinish: Long, private val fader: Fader): CountDownTimer(tillFini
 
     override fun onTick(millisUntilFinished: Long) {
         if (millisUntilFinished < startFading){
-            fader.inc()
+            fader.fade()
         }
     }
 

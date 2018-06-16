@@ -1,45 +1,42 @@
 package com.example.hazard.convoaid.UI
 
+import android.annotation.TargetApi
 import android.content.Context
 import android.graphics.Color
+import android.os.Build
 import android.view.View
+import android.view.ViewGroup
 import android.widget.RelativeLayout
+import com.example.hazard.convoaid.Const
 import com.example.hazard.convoaid.Logic.GridListener
 
-class GridView(context: Context): RelativeLayout(context), GridListener, HazardGridView {
-    private var rows: Int = 0
-    private var cols: Int = 0
+@TargetApi(Build.VERSION_CODES.O)
+class GridView(context: Context, private val rows: Int, private val cols: Int): RelativeLayout(context), GridListener {
+    private val w: Int = width / cols
+    private val h: Int = height / rows
 
-    class BlockView(context: Context, width: Int, height: Int, val color: Color): View(context){
-        init{
-            this.height = height
-        }
-    }
-
-    override fun setRows(rows: Int) {
-        this.rows = rows
-    }
-
-    override fun setCols(cols: Int) {
-        this.cols = cols
-    }
-
-    override fun setBorderColor(color: Color) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
-    override fun setStartColor(color: Color) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
-
-
-    override fun onGridChanged(grid: Array<Color>) {
+    init{
         for (r in 0..rows) {
             for (c in 0..cols) {
-
+                val parameters = RelativeLayout.LayoutParams(w, h)
+                parameters.topMargin = rows * h
+                parameters.leftMargin = cols * w
+                val view = View(context)
+                view.setBackgroundColor(Const.startColor)
+                val index = c + r * rows
+                addView(view, index, parameters)
             }
         }
+    }
+
+    @TargetApi(Build.VERSION_CODES.O)
+    override fun onGridChanged(grid: Array<Int>) {
+        for (childIndex in 0..childCount){
+            val view = getChildAt(childIndex)
+            view.setBackgroundColor(grid[childIndex])
+
+        }
+
     }
 
 

@@ -32,33 +32,28 @@ class MainActivity : AppCompatActivity(), SeekBar.OnSeekBarChangeListener, View.
     @SuppressLint("ResourceType")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        mainView = findViewById(R.layout.activity_main)
-        setContentView(mainView)
+        setContentView(R.layout.activity_main)
         setup()
     }
 
     @TargetApi(Build.VERSION_CODES.O)
     fun setup(){
         //Setup gridview
-        gridView = com.example.hazard.convoaid.UI.GridView(this)
+        gridView = com.example.hazard.convoaid.UI.GridView(this, Const.rows, Const.columns)
         gridModel = GridModel(Const.rows,Const.columns, gridView)
-        colorFader = ColorFader(Const.startColor.red(),Const.startColor.green(),Const.startColor.blue(),
-                                Const.endColor.red(),Const.endColor.green(), Const.endColor.blue(), gridModel)
+        colorFader = ColorFader(Color.red(Const.startColor),Color.green(Const.startColor),Color.blue(Const.startColor),
+                Color.red(Const.endColor),Color.green(Const.endColor),Color.blue(Const.endColor), gridModel)
         manager = Manager(gridModel, colorFader)
 
-        start = mainView.findViewById(R.id.start_button)
-        slider = mainView.findViewById(R.id.seek_bar)
-        time_text = mainView.findViewById(R.id.seeker_time)
+        start = findViewById(R.id.start_button)
+        slider = findViewById(R.id.seek_bar)
+        time_text = findViewById(R.id.seeker_time)
 
         slider.setOnSeekBarChangeListener(this)
         start.setOnClickListener(this)
     }
 
     private fun setupGrid(){
-        gridView.setRows(Const.rows)
-        gridView.setCols(Const.columns)
-        gridView.setStartColor(Const.startColor)
-        gridView.setBorderColor(Const.borderColor)
         setContentView(gridView)
     }
 
