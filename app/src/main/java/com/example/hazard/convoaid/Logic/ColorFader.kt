@@ -1,9 +1,10 @@
-package com.example.hazard.convoaid
+package com.example.hazard.convoaid.Logic
 
 import android.annotation.TargetApi
 import android.graphics.Color
 import android.os.Build
 import com.example.hazard.convoaid.Logic.ColorFaderListener
+import com.example.hazard.convoaid.Logic.Fader
 
 @TargetApi(Build.VERSION_CODES.O)
 /**

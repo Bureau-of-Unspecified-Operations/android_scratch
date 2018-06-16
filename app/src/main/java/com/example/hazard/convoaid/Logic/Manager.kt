@@ -1,11 +1,8 @@
 package com.example.hazard.convoaid.Logic
 
 import android.view.View
-import com.example.hazard.convoaid.ColorFader
-import com.example.hazard.convoaid.Fader
-import com.example.hazard.convoaid.Timer
 
-class Thing(private val points: Points, private val fader: Fader): View.OnClickListener, Setup{
+class Manager(private val points: Points, private val fader: Fader): View.OnClickListener, Setup{
     private lateinit var timer: Timer
     private var length: Long = 0
 

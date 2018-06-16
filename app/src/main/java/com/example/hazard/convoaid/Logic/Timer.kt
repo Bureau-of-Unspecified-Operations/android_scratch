@@ -1,4 +1,4 @@
-package com.example.hazard.convoaid
+package com.example.hazard.convoaid.Logic
 
 import android.os.CountDownTimer
 

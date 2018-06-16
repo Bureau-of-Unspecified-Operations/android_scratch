@@ -1,4 +1,4 @@
-package com.example.hazard.convoaid
+package com.example.hazard.convoaid.Logic
 
 import android.annotation.TargetApi
 import android.graphics.Color
