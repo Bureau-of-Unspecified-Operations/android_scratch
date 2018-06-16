@@ -13,7 +13,6 @@ class GridModel(row: Int, col: Int, private val listener: GridListener): Points,
     @RequiresApi(Build.VERSION_CODES.O)
     private val startColor: Color = Color.valueOf(Color.GREEN)
     private val pointColor: Color = Color.valueOf(Color.BLUE)
-    private val size = row * col
     private val grid: Array<Color> = Array(row * col, {i -> startColor})
     private var pointIndex: Int = 0
 
