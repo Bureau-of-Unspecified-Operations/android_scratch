@@ -22,6 +22,12 @@ class Manager(private val points: Points, private val fader: Fader): View.OnClic
         this.length = length
     }
 
+    companion object {
+        fun secToLong(time: Int): Long{
+            return (time * 60 * 1000).toLong()
+        }
+    }
+
 
 
 }
